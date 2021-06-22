@@ -9,6 +9,9 @@
             "email": "octobercms@vdlp.nl"
         }
     ],
+    "support": {
+        "email": "octobercms@vdlp.nl"
+    },
     "keywords": [
         "october",
         "octobercms",
@@ -21,7 +24,8 @@
         "ext-pcntl": "*",
         "ext-posix": "*",
         "ext-redis": "*",
-        "laravel/horizon": "^3.0"
+        "laravel/horizon": "^3.0",
+        "composer/installers": "^1.0"
 
     },
     "archive": {
