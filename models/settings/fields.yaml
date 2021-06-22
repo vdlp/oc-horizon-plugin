@@ -1,0 +1,40 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    section_notifications:
+        label: Horizon notifications
+        comment: "Note: Before using notifications, you should add the <code>guzzlehttp/guzzle</code> Composer package to your project. When configuring Horizon to send SMS notifications, you should also review the <a href=\"https://laravel.com/docs/5.5/notifications#sms-notifications\" target=\"_blank\">prerequisites for the Nexmo notification driver</a>."
+        commentHtml: true
+        type: section
+        span: left
+    mail_notifications_enabled:
+        label: Enable email notifications
+        type: switch
+        span: left
+    mail_notifications_to:
+        label: Mail notifications to
+        type: text
+        span: left
+    slack_notifications_enabled:
+        label: Enable Slack notifications
+        type: switch
+        span: left
+    slack_notifications_webhook_url:
+        label: Slack webhook URL
+        type: text
+        span: left
+    slack_notifications_channel:
+        label: Slack channel
+        type: text
+        span: left
+        comment: "E.g. #my-channel"
+    sms_notifications_enabled:
+        label: Enable SMS notifications
+        type: switch
+        span: left
+    sms_notifications_to:
+        label: Send SMS notifications to
+        text: text
+        span: left

@@ -1,0 +1,33 @@
+{
+    "name": "vdlp/oc-horizon-plugin",
+    "type": "october-plugin",
+    "description": "Laravel Horizon integration for October CMS",
+    "homepage": "https://vdlp.nl",
+    "authors": [
+        {
+            "name": "Van der Let & Partners",
+            "email": "octobercms@vdlp.nl"
+        }
+    ],
+    "keywords": [
+        "october",
+        "octobercms",
+        "horizon",
+        "laravel-queues"
+    ],
+    "license": "GPL-2.0-only",
+    "require": {
+        "php": ">=7.1",
+        "ext-pcntl": "*",
+        "ext-posix": "*",
+        "ext-redis": "*",
+        "laravel/horizon": "^3.0"
+
+    },
+    "archive": {
+        "exclude": [
+            ".gitignore",
+            ".idea/"
+        ]
+    }
+}
