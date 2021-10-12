@@ -4,10 +4,17 @@ declare(strict_types=1);
 
 namespace Vdlp\Horizon\Classes;
 
-use Illuminate\Support\Facades\URL;
+use Illuminate\Contracts\Routing\UrlGenerator;
 
 final class PathHelper
 {
+    private UrlGenerator $urlGenerator;
+
+    public function __construct(UrlGenerator $urlGenerator)
+    {
+        $this->urlGenerator = $urlGenerator;
+    }
+
     public function getAssetsPath(?string $path = null): string
     {
         $assetsPath = plugins_path('vdlp/horizon/assets');
@@ -21,7 +28,7 @@ final class PathHelper
 
     public function getAssetsUrlPath(?string $path = null): string
     {
-        $assetsUrlPath = URL::asset('plugins/vdlp/horizon/assets');
+        $assetsUrlPath = $this->urlGenerator->asset('plugins/vdlp/horizon/assets');
 
         if ($path !== null) {
             $assetsUrlPath .= '/' . ltrim($path, '/');
