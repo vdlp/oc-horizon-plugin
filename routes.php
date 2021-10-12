@@ -10,7 +10,8 @@ $router = resolve(Router::class);
 
 $router->group(['middleware' => ['web']], static function () use ($router) {
     $router->get('/vendor/horizon/img/horizon.svg', static function () {
-        $helper = new PathHelper;
+        /** @var PathHelper $helper */
+        $helper = resolve(PathHelper::class);
 
         return response()->download($helper->getAssetsPath('img/horizon.svg'), 'horizon.svg', [
             'Content-Type' => 'image/svg+xml',
