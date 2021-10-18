@@ -32,7 +32,7 @@ final class Plugin extends PluginBase
     {
         return [
             'name' => 'Horizon',
-            'description' => 'Laravel Horizon integration for OctoberCMS',
+            'description' => 'Laravel Horizon integration for October CMS',
             'author' => 'Van der Let & Partners',
             'icon' => 'icon-area-chart',
             'homepage' => 'https://octobercms.com/plugin/vdlp-horizon',
