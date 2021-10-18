@@ -59,7 +59,15 @@ You should add the `dont-discover` option to your projects `composer.json` file 
 php artisan horizon:install
 ```
 
-> **IMPORTANT: Add the above line to your deployment logic. This way the assets will always be up to date.**
+## Update Horizon Assets
+
+To update the Horizon Assets you can use the following command:
+
+```
+php artisan horizon:assets
+```
+
+> IMPORTANT: Add the above command to your deployment logic. This way the assets will always be up to date on your staging or production environment.
 
 * Configure Laravel Horizon settings file at `config/horizon.php`, please make sure `use` contains `horizon` (see the configuration snippet below).
 
