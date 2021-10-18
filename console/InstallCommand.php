@@ -19,7 +19,7 @@ final class InstallCommand extends Command
     public function handle(): void
     {
         $this->comment('Publishing Horizon Assets...');
-        $this->callSilent('vendor:publish', ['--tag' => 'horizon-assets', '--force' => true]);
+        $this->callSilent('vendor:publish', ['--tag' => 'horizon-assets']);
 
         $this->comment('Publishing Horizon Configuration...');
         $this->callSilent('vendor:publish', ['--tag' => 'horizon-config']);
