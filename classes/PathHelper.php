@@ -4,39 +4,20 @@ declare(strict_types=1);
 
 namespace Vdlp\Horizon\Classes;
 
-use Cms\Classes\Theme;
-use Cms\Facades\Cms;
+use Illuminate\Contracts\Routing\UrlGenerator;
 
 final class PathHelper
 {
-    /**
-     * @var Theme|null
-     */
-    private $theme;
+    private UrlGenerator $urlGenerator;
 
-    public function __construct()
+    public function __construct(UrlGenerator $urlGenerator)
     {
-        $this->theme = Theme::getActiveTheme();
-    }
-
-    private function hasActiveTheme(): bool
-    {
-        return $this->theme !== null;
+        $this->urlGenerator = $urlGenerator;
     }
 
     public function getAssetsPath(?string $path = null): string
     {
-        if (!$this->hasActiveTheme()) {
-            return (string) $path;
-        }
-
-        $assetsPath = $this->theme->getPath(
-            $this->theme->getDirName()
-            . DIRECTORY_SEPARATOR
-            . 'assets'
-            . DIRECTORY_SEPARATOR
-            . 'horizon'
-        );
+        $assetsPath = plugins_path('vdlp/horizon/assets');
 
         if ($path !== null) {
             $assetsPath .= DIRECTORY_SEPARATOR . ltrim($path, DIRECTORY_SEPARATOR);
@@ -47,11 +28,7 @@ final class PathHelper
 
     public function getAssetsUrlPath(?string $path = null): string
     {
-        if (!$this->hasActiveTheme()) {
-            return (string) $path;
-        }
-
-        $assetsUrlPath = Cms::url('/themes/' . $this->theme->getDirName() . '/assets/horizon');
+        $assetsUrlPath = $this->urlGenerator->asset('plugins/vdlp/horizon/assets');
 
         if ($path !== null) {
             $assetsUrlPath .= '/' . ltrim($path, '/');

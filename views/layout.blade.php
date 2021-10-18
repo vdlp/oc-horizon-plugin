@@ -1,4 +1,4 @@
-<?php $helper = new \Vdlp\Horizon\Classes\PathHelper; ?><!doctype>
+<?php $helper = app(\Vdlp\Horizon\Classes\PathHelper::class); ?><!doctype>
 <!DOCTYPE html>
 <html lang="en">
 <head>
