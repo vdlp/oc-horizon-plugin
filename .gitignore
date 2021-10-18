@@ -1,3 +1,6 @@
 .idea
+assets/img
+assets/app*
+assets/mix-manifest.json
 vendor
 composer.lock

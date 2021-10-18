@@ -11,7 +11,8 @@ use Illuminate\Foundation\AliasLoader;
 use Illuminate\Notifications\NotificationServiceProvider;
 use Laravel\Horizon\Horizon;
 use System\Classes\PluginBase;
-use Vdlp\Horizon\Console\PushExampleJobs;
+use Vdlp\Horizon\Console\InstallCommand;
+use Vdlp\Horizon\Console\PushExampleJobsCommand;
 use Vdlp\Horizon\ServiceProviders\HorizonServiceProvider;
 
 final class Plugin extends PluginBase
@@ -60,8 +61,10 @@ final class Plugin extends PluginBase
         $this->bootNotificationSettings();
 
         if (config('app.debug') === true) {
-            $this->registerConsoleCommand(PushExampleJobs::class, PushExampleJobs::class);
+            $this->registerConsoleCommand(PushExampleJobsCommand::class, PushExampleJobsCommand::class);
         }
+
+        $this->registerConsoleCommand(InstallCommand::class, InstallCommand::class);
     }
 
     public function register(): void

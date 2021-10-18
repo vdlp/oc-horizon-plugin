@@ -53,21 +53,13 @@ You should add the `dont-discover` option to your projects `composer.json` file 
 
 > IMPORTANT: Make sure the `composer.json` is deployed to your hosting site. This will be parsed by te framework to determine which service providers should be ignored.
 
-## Assets
-
-* Run the command to publish assets for the Horizon dashboard:
+## Assets & Configuration
 
 ```
-php artisan vendor:publish --tag horizon-assets --force
+php artisan horizon:install
 ```
 
-## Configuration
-
-* Run the command to publish configuration file `config/horizon.php`:
-
-```
-php artisan vendor:publish --tag horizon-config --force
-```
+> **IMPORTANT: Add the above line to your deployment logic. This way the assets will always be up to date.**
 
 * Configure Laravel Horizon settings file at `config/horizon.php`, please make sure `use` contains `horizon` (see the configuration snippet below).
 
