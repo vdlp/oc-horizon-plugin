@@ -4,15 +4,20 @@ declare(strict_types=1);
 
 namespace Vdlp\Horizon\Classes;
 
+use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Contracts\Routing\UrlGenerator;
+use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Facades\File;
 
 final class PathHelper
 {
     private UrlGenerator $urlGenerator;
+    private Filesystem $filesystem;
 
-    public function __construct(UrlGenerator $urlGenerator)
+    public function __construct(UrlGenerator $urlGenerator, Filesystem $filesystem)
     {
         $this->urlGenerator = $urlGenerator;
+        $this->filesystem = $filesystem;
     }
 
     public function getAssetsPath(?string $path = null): string
@@ -35,5 +40,17 @@ final class PathHelper
         }
 
         return $assetsUrlPath;
+    }
+
+    public function assetsAreCurrent(): bool
+    {
+        $publishedPath = $this->getAssetsPath('mix-manifest.json');
+        $vendorPath = base_path('vendor/laravel/horizon/public/mix-manifest.json');
+
+        try {
+            return $this->filesystem->get($publishedPath) === $this->filesystem->get($vendorPath);
+        } catch (FileNotFoundException $exception) {
+            return false;
+        }
     }
 }

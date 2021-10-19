@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Routing\Router;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Vdlp\Horizon\Classes\PathHelper;
@@ -20,15 +22,19 @@ $router->group(['middleware' => ['web']], static function () use ($router, $path
     });
 });
 
-if (!file_exists($pathHelper->getAssetsPath('mix-manifest.json'))) {
+if (!$pathHelper->assetsAreCurrent()) {
     $router->group([
         'domain' => config('horizon.domain'),
         'prefix' => config('horizon.path'),
         'middleware' => config('horizon.middleware', 'web'),
-    ], function () use ($router): void {
-        $router->get('/{dashboard?}', function (): string {
-            return 'The published Horizon assets are not up-to-date with the installed version. '
-                . 'To update, run:<br/><code>php artisan horizon:install</code>';
+    ], static function () use ($router): void {
+        $router->get('/{dashboard?}', static function (Request $request) {
+            if (Laravel\Horizon\Horizon::check($request)) {
+                return 'The published Horizon assets are not up-to-date with the installed version. '
+                    . 'To update, run:<br/><code>php artisan horizon:assets</code>';
+            }
+
+            return new Response('Not Found', 404);
         });
     });
 }
