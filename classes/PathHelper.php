@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace Vdlp\Horizon\Classes;
 
-use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Contracts\Routing\UrlGenerator;
 use Illuminate\Filesystem\Filesystem;
-use Illuminate\Support\Facades\File;
+use Throwable;
 
 final class PathHelper
 {
@@ -49,7 +48,7 @@ final class PathHelper
 
         try {
             return $this->filesystem->get($publishedPath) === $this->filesystem->get($vendorPath);
-        } catch (FileNotFoundException $exception) {
+        } catch (Throwable $exception) {
             return false;
         }
     }
