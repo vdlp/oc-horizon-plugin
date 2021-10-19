@@ -6,8 +6,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.1.0] - 2021-10-18
 ### Changed
-- The location of the Horizon assets has been changed. The Horizon assets are published into the plugin directory itself. Please note that you need to re-publish the assets when you're deploying your October CMS website or application using the `php artisan vendor:publish --tag horizon-assets --force` command otherwise the Horizon Dashboard will not be available.
-- The `horizon:install` command can now be used to (re-)publish the Horizon Assets required for the Horizon Dashboard. 
+- The location of the Horizon assets has been changed. The Horizon assets are published into the plugin directory itself (`plugins/vdlp/horizon/assets`). Please note that you need to re-publish the assets when you are deploying your October CMS website or application using the `php artisan horizon:assets` command otherwise the Horizon Dashboard will not be available.
+- The `horizon:assets` command can now be used to (re-)publish the Horizon Assets required for the Horizon Dashboard. 
 - Renamed `PushExampleJobs` to `PushExampleJobsCommand`.
 
 ### Removed
