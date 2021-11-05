@@ -91,9 +91,9 @@ php artisan horizon:assets
 ```
     'redis' => [
 
-        'driver' => env('QUEUE_DRIVER', 'redis'),
-        'connection' => env('QUEUE_CONNECTION', 'horizon'),
-        'queue' => env('QUEUE_DEFAULT', 'default'),
+        'driver' => 'redis',
+        'connection' => 'horizon', // References: databases.redis.horizon
+        'queue' => 'default',
         'retry_after' => env('QUEUE_RETRY_AFTER', 90),
         'block_for' => null,
 
