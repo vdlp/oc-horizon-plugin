@@ -12,8 +12,10 @@ use Psr\Log\LoggerInterface;
 
 final class Example implements ShouldQueue
 {
-    use Dispatchable, Queueable;
-    private $fooBar;
+    use Dispatchable;
+    use Queueable;
+
+    private string $fooBar;
 
     public function __construct(string $fooBar)
     {
@@ -21,7 +23,6 @@ final class Example implements ShouldQueue
     }
 
     /**
-     * @param LoggerInterface $log
      * @throws Exception
      */
     public function handle(LoggerInterface $log): void

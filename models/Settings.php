@@ -13,8 +13,8 @@ use System\Behaviors\SettingsModel;
 final class Settings extends Model
 {
     public $implement = ['System.Behaviors.SettingsModel'];
-    public $settingsCode = 'vdlp_horizon_settings';
-    public $settingsFields = 'fields.yaml';
+    public string $settingsCode = 'vdlp_horizon_settings';
+    public string $settingsFields = 'fields.yaml';
 
     public function isMailNotificationEnabled(): bool
     {

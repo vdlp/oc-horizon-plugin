@@ -8,7 +8,7 @@ use Illuminate\Console\Command;
 use October\Rain\Support\Str;
 use Vdlp\Horizon\Jobs\Example;
 
-final class PushExampleJobs extends Command
+final class PushExampleJobsCommand extends Command
 {
     public function __construct()
     {

@@ -11,15 +11,8 @@ use Laravel\Horizon;
 
 final class SendNotification
 {
-    /**
-     * @var Horizon\Lock
-     */
-    private $lock;
-
-    /**
-     * @var Mailer
-     */
-    private $mailer;
+    private Horizon\Lock $lock;
+    private Mailer $mailer;
 
     public function __construct(Horizon\Lock $lock, Mailer $mailer)
     {
@@ -46,11 +39,14 @@ final class SendNotification
                 'seconds' => $notification->seconds,
             ];
 
-            $this->mailer->send('vdlp.horizon::mail.long-wait-detected', $data, static function (Message $message) {
-                $message
-                    ->to(Horizon\Horizon::$email)
-                    ->subject(config('app.name') . ': Long Queue Wait Detected');
-            });
+            $this->mailer->send(
+                'vdlp.horizon::mail.long-wait-detected',
+                $data,
+                static function (Message $message): void {
+                    $message
+                        ->to(Horizon\Horizon::$email)
+                        ->subject(config('app.name') . ': Long Queue Wait Detected');
+                });
         }
     }
 }

@@ -4,39 +4,24 @@ declare(strict_types=1);
 
 namespace Vdlp\Horizon\Classes;
 
-use Cms\Classes\Theme;
-use Cms\Facades\Cms;
+use Illuminate\Contracts\Routing\UrlGenerator;
+use Illuminate\Filesystem\Filesystem;
+use Throwable;
 
 final class PathHelper
 {
-    /**
-     * @var Theme|null
-     */
-    private $theme;
+    private UrlGenerator $urlGenerator;
+    private Filesystem $filesystem;
 
-    public function __construct()
+    public function __construct(UrlGenerator $urlGenerator, Filesystem $filesystem)
     {
-        $this->theme = Theme::getActiveTheme();
-    }
-
-    private function hasActiveTheme(): bool
-    {
-        return $this->theme !== null;
+        $this->urlGenerator = $urlGenerator;
+        $this->filesystem = $filesystem;
     }
 
     public function getAssetsPath(?string $path = null): string
     {
-        if (!$this->hasActiveTheme()) {
-            return (string) $path;
-        }
-
-        $assetsPath = $this->theme->getPath(
-            $this->theme->getDirName()
-            . DIRECTORY_SEPARATOR
-            . 'assets'
-            . DIRECTORY_SEPARATOR
-            . 'horizon'
-        );
+        $assetsPath = plugins_path('vdlp/horizon/assets');
 
         if ($path !== null) {
             $assetsPath .= DIRECTORY_SEPARATOR . ltrim($path, DIRECTORY_SEPARATOR);
@@ -47,16 +32,24 @@ final class PathHelper
 
     public function getAssetsUrlPath(?string $path = null): string
     {
-        if (!$this->hasActiveTheme()) {
-            return (string) $path;
-        }
-
-        $assetsUrlPath = Cms::url('/themes/' . $this->theme->getDirName() . '/assets/horizon');
+        $assetsUrlPath = $this->urlGenerator->asset('plugins/vdlp/horizon/assets');
 
         if ($path !== null) {
             $assetsUrlPath .= '/' . ltrim($path, '/');
         }
 
         return $assetsUrlPath;
+    }
+
+    public function assetsAreCurrent(): bool
+    {
+        $publishedPath = $this->getAssetsPath('mix-manifest.json');
+        $vendorPath = base_path('vendor/laravel/horizon/public/mix-manifest.json');
+
+        try {
+            return $this->filesystem->get($publishedPath) === $this->filesystem->get($vendorPath);
+        } catch (Throwable $exception) {
+            return false;
+        }
     }
 }

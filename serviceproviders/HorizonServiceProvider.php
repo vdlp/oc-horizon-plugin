@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Vdlp\Horizon\ServiceProviders;
 
-use Cms\Classes\Theme;
 use Laravel\Horizon;
 use Laravel\Horizon\HorizonServiceProvider as HorizonServiceProviderBase;
 use Vdlp\Horizon\Listeners\SendNotification;
@@ -14,7 +13,7 @@ final class HorizonServiceProvider extends HorizonServiceProviderBase
     public function defineAssetPublishing(): void
     {
         $this->publishes([
-            HORIZON_PATH . '/public' => $this->getAssetPath(),
+            HORIZON_PATH . '/public' => plugins_path('vdlp/horizon/assets'),
         ], 'horizon-assets');
     }
 
@@ -30,21 +29,5 @@ final class HorizonServiceProvider extends HorizonServiceProviderBase
     protected function registerResources(): void
     {
         $this->loadViewsFrom(plugins_path('vdlp/horizon/views'), 'horizon');
-    }
-
-    private function getAssetPath(): string
-    {
-        /** @var Theme $theme */
-        $theme = Theme::getActiveTheme();
-
-        if ($theme === null) {
-            return '';
-        }
-
-        return $theme->getPath(implode(DIRECTORY_SEPARATOR, [
-            $theme->getDirName(),
-            'assets',
-            'horizon',
-        ]));
     }
 }
