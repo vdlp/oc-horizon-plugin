@@ -18,8 +18,8 @@ Horizon is 100% open source, so you're free to dig through the source to see exa
 
 ## Requirements
 
-* October CMS 1.0
-* Due to its usage of async process signals, Horizon requires **PHP 7.1+**.
+* October CMS 1.0 or higher
+* PHP 7.4 or PHP 8.0+
 * PHP extensions: `ext-pcntl`, `ext-posix` and `ext-redis`.
 * Supervisor, see [Laravel 6.x supervisor configuration](https://laravel.com/docs/6.x/queues#supervisor-configuration).
 
