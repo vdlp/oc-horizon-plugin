@@ -139,7 +139,7 @@ php artisan horizon:assets
     |
     */
 
-    'default' => env('QUEUE_DRIVER', 'redis'),
+    'default' => env('QUEUE_CONNECTION', 'redis'),
 ```
 
 * `.env` should at least have the following `QUEUE_` and `HORIZON_` variables:
@@ -148,17 +148,13 @@ php artisan horizon:assets
 #
 # Queue
 #
-QUEUE_DRIVER = "redis"
-QUEUE_CONNECTION = "horizon"
-QUEUE_DEFAULT = "default"
+QUEUE_CONNECTION = "redis"
 QUEUE_RETRY_AFTER = 90
 
 #
 # Horizon
 #
 HORIZON_PREFIX = "myproject-local:"
-HORIZON_FAST_TERMINATION = false
-HORIZON_MEMORY_LIMIT = 64
 
 HORIZON_REDIS_HOST = "127.0.0.1"
 HORIZON_REDIS_PASSWORD = null
