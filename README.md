@@ -91,9 +91,9 @@ php artisan horizon:assets
 ```
     'redis' => [
 
-        'driver' => env('QUEUE_DRIVER', 'redis'),
-        'connection' => env('QUEUE_CONNECTION', 'horizon'),
-        'queue' => env('QUEUE_DEFAULT', 'default'),
+        'driver' => 'redis',
+        'connection' => 'horizon', // References: databases.redis.horizon
+        'queue' => 'default',
         'retry_after' => env('QUEUE_RETRY_AFTER', 90),
         'block_for' => null,
 
@@ -139,7 +139,7 @@ php artisan horizon:assets
     |
     */
 
-    'default' => env('QUEUE_DRIVER', 'redis'),
+    'default' => env('QUEUE_CONNECTION', 'redis'),
 ```
 
 * `.env` should at least have the following `QUEUE_` and `HORIZON_` variables:
@@ -148,17 +148,13 @@ php artisan horizon:assets
 #
 # Queue
 #
-QUEUE_DRIVER = "redis"
-QUEUE_CONNECTION = "horizon"
-QUEUE_DEFAULT = "default"
+QUEUE_CONNECTION = "redis"
 QUEUE_RETRY_AFTER = 90
 
 #
 # Horizon
 #
 HORIZON_PREFIX = "myproject-local:"
-HORIZON_FAST_TERMINATION = false
-HORIZON_MEMORY_LIMIT = 64
 
 HORIZON_REDIS_HOST = "127.0.0.1"
 HORIZON_REDIS_PASSWORD = null
@@ -202,12 +198,6 @@ stdout_logfile=/var/log/supervisord/<queue-name>-queue.log
 ```
 * * * * * /<path-to-php>/php /<myproject-directory>/artisan schedule:run > /dev/null
 ```
-
-## Switching themes
-
-> Each time you switch the default theme you need to re-publish the Horizon assets using the command: `php artisan vendor:publish --tag horizon-assets --force`
-
-The assets will be stored in your current theme folder: `themes/mytheme/assets/horizon` folder.
 
 ## Creating Job classes
 
