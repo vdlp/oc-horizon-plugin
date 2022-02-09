@@ -97,6 +97,6 @@
 </script>
 
 <script src="{!! $helper->getAssetsUrlPath('app.js') !!}"></script>
-{{--<script src="{{asset(mix('app.js', 'vendor/horizon'))}}"></script>--}}
+
 </body>
 </html>

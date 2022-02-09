@@ -199,12 +199,6 @@ stdout_logfile=/var/log/supervisord/<queue-name>-queue.log
 * * * * * /<path-to-php>/php /<myproject-directory>/artisan schedule:run > /dev/null
 ```
 
-## Switching themes
-
-> Each time you switch the default theme you need to re-publish the Horizon assets using the command: `php artisan vendor:publish --tag horizon-assets --force`
-
-The assets will be stored in your current theme folder: `themes/mytheme/assets/horizon` folder.
-
 ## Creating Job classes
 
 Follow the instructions at [Laravel 6.x generating job classes](https://laravel.com/docs/6.x/queues#generating-job-classes) on how to make Job classes.
