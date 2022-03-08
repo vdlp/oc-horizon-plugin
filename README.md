@@ -1,6 +1,6 @@
 # Vdlp.Horizon
 
-Provides a seamless integration of [Laravel Horizon 3.0](https://laravel.com/docs/6.x/horizon) inside October CMS.
+Provides a seamless integration of [Laravel Horizon 5.0](https://laravel.com/docs/9.x/horizon) inside October CMS.
 
 ![Laravel Horizon Logo](https://plugins.vdlp.nl/octobercms/oc-horizon-plugin/logo.png)
 
@@ -18,10 +18,10 @@ Horizon is 100% open source, so you're free to dig through the source to see exa
 
 ## Requirements
 
-* October CMS 1.0 or higher
-* PHP 7.4 or PHP 8.0+
+* October CMS 3.0
+* PHP 8.1
 * PHP extensions: `ext-pcntl`, `ext-posix` and `ext-redis`.
-* Supervisor, see [Laravel 6.x supervisor configuration](https://laravel.com/docs/6.x/queues#supervisor-configuration).
+* Supervisor, see [Laravel 9.x supervisor configuration](https://laravel.com/docs/9.x/queues#supervisor-configuration).
 
 ## Installation
 
@@ -38,9 +38,6 @@ You should add the `dont-discover` option to your projects `composer.json` file 
 
 ```
 "extra": {
-    "merge-plugin": {
-        ...
-    },
     "laravel": {
         "dont-discover": [
             "laravel/horizon"
@@ -64,10 +61,10 @@ php artisan horizon:install
 To update the Horizon Assets you can use the following command:
 
 ```
-php artisan horizon:assets
+php artisan horizon:publish
 ```
 
-> IMPORTANT: Add the above command to your deployment logic. This way the assets will always be up to date on your staging or production environment.
+> IMPORTANT: Add the above command to your deployment logic or composer update scripts. This way the assets will always be up to date on your staging or production environment.
 
 * Configure Laravel Horizon settings file at `config/horizon.php`, please make sure `use` contains `horizon` (see the configuration snippet below).
 
@@ -226,7 +223,7 @@ php artisan vdlp:horizon:push-example-jobs
 
 Please go to the Laravel website for detailed documentation about Laravel Horizon.
 
-[Horizon for Laravel 6.x](https://laravel.com/docs/6.x/horizon)
+[Horizon for Laravel 9.x](https://laravel.com/docs/9.x/horizon)
 
 ## Questions
 

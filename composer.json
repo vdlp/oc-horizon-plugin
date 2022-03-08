@@ -20,13 +20,13 @@
         "email": "octobercms@vdlp.nl"
     },
     "require": {
-        "php": "^7.4 || ^8.0",
+        "php": "^8.1",
         "ext-pcntl": "*",
         "ext-posix": "*",
         "ext-redis": "*",
         "composer/installers": "^1.0 || ^2.0",
-        "laravel/horizon": "^3.0",
-        "october/system": "^1.0 || ^2.0"
+        "laravel/horizon": "^5.0",
+        "october/system": "^3.0"
     },
     "archive": {
         "exclude": [
