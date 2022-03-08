@@ -1,0 +1,7 @@
+#
+# Exclude files from exporting
+#
+
+/.gitattributes     export-ignore
+/.github            export-ignore
+/.gitignore         export-ignore
