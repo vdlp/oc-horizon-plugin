@@ -20,7 +20,7 @@
         "email": "octobercms@vdlp.nl"
     },
     "require": {
-        "php": "^8.1",
+        "php": "^8.0.2",
         "ext-pcntl": "*",
         "ext-posix": "*",
         "ext-redis": "*",
