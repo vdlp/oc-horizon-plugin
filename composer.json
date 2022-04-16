@@ -28,6 +28,15 @@
         "laravel/horizon": "^5.0",
         "october/system": "^3.0"
     },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://gateway.octobercms.com",
+            "only": [
+                "october/system"
+            ]
+        }
+    ],
     "archive": {
         "exclude": [
             ".gitignore",
