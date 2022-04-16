@@ -7,7 +7,6 @@ namespace Vdlp\Horizon;
 use Backend\Classes\AuthManager;
 use Backend\Helpers\Backend;
 use Backend\Models\User;
-use Illuminate\Foundation\AliasLoader;
 use Illuminate\Notifications\NotificationServiceProvider;
 use Laravel\Horizon\Horizon;
 use System\Classes\PluginBase;
@@ -68,8 +67,6 @@ final class Plugin extends PluginBase
     {
         $this->app->register(HorizonServiceProvider::class);
         $this->app->register(NotificationServiceProvider::class);
-
-        AliasLoader::getInstance()->alias('Horizon', 'Laravel\Horizon\Horizon');
     }
 
     public function registerSchedule($schedule): void
@@ -110,20 +107,20 @@ final class Plugin extends PluginBase
 
     private function bootNotificationSettings(): void
     {
-        if ((bool) config('vdlp.horizon::mail_notifications_enabled', false)) {
+        if (config('vdlp.horizon::mail_notifications_enabled', false) === true) {
             Horizon::routeMailNotificationsTo(
                 config('vdlp.horizon::mail_notifications_to')
             );
         }
 
-        if ((bool) config('vdlp.horizon::slack_notifications_enabled', false)) {
+        if (config('vdlp.horizon::slack_notifications_enabled', false) === true) {
             Horizon::routeSlackNotificationsTo(
                 config('vdlp.horizon::slack_notifications_webhook_url'),
                 config('vdlp.horizon::slack_notifications_channel')
             );
         }
 
-        if ((bool) config('vdlp.horizon::sms_notifications_enabled', false)) {
+        if (config('vdlp.horizon::sms_notifications_enabled', false) === true) {
             Horizon::routeSmsNotificationsTo(
                 config('vdlp.horizon::sms_notifications_to')
             );
