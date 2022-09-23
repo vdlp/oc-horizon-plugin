@@ -3,3 +3,6 @@ v2.0.0: "Removed the dependency of the October CMS module. Moved Horizon Assets.
 v2.0.1: "Update plugin documentation"
 v2.0.2: "Maintenance release"
 v3.0.0: "Upgrade to Horizon 5.x"
+v3.1.0:
+  - "Add migration for Job Batches table"
+  - 20220923_0001_create_job_batches_table.php
