@@ -90,7 +90,7 @@ php artisan horizon:publish
 
         'driver' => 'redis',
         'connection' => 'horizon', // References: databases.redis.horizon
-        'queue' => 'default',
+        'queue' => env('REDIS_QUEUE', 'default'),
         'retry_after' => env('QUEUE_RETRY_AFTER', 90),
         'block_for' => null,
 
@@ -119,7 +119,7 @@ php artisan horizon:publish
     ],
 ```
 
-* Modify the queue driver `QUEUE_DRIVER` (can be found in `config/queue.php`) to `redis` as such:
+* Modify the queue connection `QUEUE_CONNECTION` (which can be found in `config/queue.php`) to `redis` as such:
 
 ```
     /*
@@ -158,17 +158,6 @@ HORIZON_REDIS_PASSWORD = null
 HORIZON_REDIS_PORT = 6379
 HORIZON_REDIS_DATABASE = "1"
 
-HORIZON_MAIL_NOTIFICATIONS_ENABLED = false
-HORIZON_MAIL_NOTIFICATIONS_TO = null
-
-HORIZON_SLACK_NOTIFICATIONS_ENABLED = false
-HORIZON_SLACK_NOTIFICATIONS_WEBHOOK_URL = null
-HORIZON_SLACK_NOTIFICATIONS_CHANNEL = null
-
-HORIZON_SMS_NOTIFICATIONS_ENABLED = false
-HORIZON_SMS_NOTIFICATIONS_TO = null
-
-HORIZON_USE_DARK_THEME = true
 ```
 
 It's recommended to add your Queue Worker Configuration `config.horizon.environments` to the `.env` file as well.
@@ -198,7 +187,7 @@ stdout_logfile=/var/log/supervisord/<queue-name>-queue.log
 
 ## Creating Job classes
 
-Follow the instructions at [Laravel 6.x generating job classes](https://laravel.com/docs/6.x/queues#generating-job-classes) on how to make Job classes.
+Follow the instructions at [Laravel 9.x generating job classes](https://laravel.com/docs/9.x/queues#generating-job-classes) on how to make Job classes.
 
 > Please note that the use of the `php artisan make:job` command is not supported in October CMS. October CMS is using a different application structure in comparison to a generic Laravel project.
 
