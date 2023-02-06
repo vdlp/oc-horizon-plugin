@@ -15,6 +15,11 @@
             "email": "octobercms@vdlp.nl"
         }
     ],
+    "config": {
+        "allow-plugins": {
+            "composer/installers": true
+        }
+    },
     "homepage": "https://vdlp.nl",
     "support": {
         "email": "octobercms@vdlp.nl"
