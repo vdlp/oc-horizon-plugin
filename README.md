@@ -165,7 +165,7 @@ It's recommended to add your Queue Worker Configuration `config.horizon.environm
 ## Server configuration
 
 * Add the following to the `supervisord` configuration on the server. The complete `supervisord` configuration can be found [on the supervisor website](http://supervisord.org/index.html).
-
+* See [Configuring Supervisor](https://laravel.com/docs/9.x/queues#configuring-supervisor) (Official Laravel Documentation).
 ```
 [program:<queue-name>-queue]
 process_name=%(program_name)s_%(process_num)02d
@@ -173,13 +173,16 @@ directory=/<myproject-directory>
 command=/<path-to-php>/php /<myproject-directory>/artisan horizon
 autostart=true
 autorestart=true
+stopasgroup=true
+killasgroup=true
 user=<user>
 numprocs=1
 redirect_stderr=true
 stdout_logfile=/var/log/supervisord/<queue-name>-queue.log
+stopwaitsecs=90
 ```
 
-* Add the following to the cronjob configuration on the server. This will make sure the [Horizon metrics](https://laravel.com/docs/6.x/horizon#metrics) are created periodically.
+* Add the following to the cronjob configuration on the server. This will make sure the [Horizon metrics](https://laravel.com/docs/9.x/horizon#metrics) are created periodically.
 
 ```
 * * * * * /<path-to-php>/php /<myproject-directory>/artisan schedule:run > /dev/null
