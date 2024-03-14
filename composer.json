@@ -41,12 +41,5 @@
                 "october/system"
             ]
         }
-    ],
-    "archive": {
-        "exclude": [
-            ".gitignore",
-            ".gitattributes",
-            ".idea/"
-        ]
-    }
+    ]
 }
