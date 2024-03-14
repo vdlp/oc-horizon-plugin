@@ -15,11 +15,6 @@
             "email": "octobercms@vdlp.nl"
         }
     ],
-    "config": {
-        "allow-plugins": {
-            "composer/installers": true
-        }
-    },
     "homepage": "https://vdlp.nl",
     "support": {
         "email": "octobercms@vdlp.nl"
@@ -33,6 +28,9 @@
         "laravel/horizon": "^5.0",
         "october/rain": "^3.0"
     },
+    "require-dev": {
+        "ergebnis/composer-normalize": "^2.42"
+    },
     "repositories": [
         {
             "type": "composer",
@@ -41,5 +39,11 @@
                 "october/system"
             ]
         }
-    ]
+    ],
+    "config": {
+        "allow-plugins": {
+            "composer/installers": true,
+            "ergebnis/composer-normalize": true
+        }
+    }
 }
