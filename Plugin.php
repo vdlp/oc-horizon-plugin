@@ -16,15 +16,6 @@ use Vdlp\Horizon\ServiceProviders\HorizonServiceProvider;
 
 final class Plugin extends PluginBase
 {
-    private Backend $backend;
-
-    public function __construct($app)
-    {
-        parent::__construct($app);
-
-        $this->backend = resolve(Backend::class);
-    }
-
     public function pluginDetails(): array
     {
         return [
@@ -51,8 +42,6 @@ final class Plugin extends PluginBase
             return $user->hasPermission('vdlp.horizon.access_dashboard')
                 || $user->isSuperUser();
         });
-
-        Horizon::$useDarkTheme = config('vdlp.horizon::use_dark_theme', true);
 
         $this->bootNotificationSettings();
 
@@ -87,10 +76,13 @@ final class Plugin extends PluginBase
 
     public function registerNavigation(): array
     {
+        /** @var Backend $backend */
+        $backend = $this->app->make(Backend::class);
+
         return [
             'dashboard' => [
                 'label' => 'Horizon',
-                'url' => $this->backend->url('vdlp/horizon/dashboard'),
+                'url' => $backend->url('vdlp/horizon/dashboard'),
                 'iconSvg' => '/plugins/vdlp/horizon/assets/icons/horizon.svg',
                 'permissions' => ['vdlp.horizon.access_dashboard'],
                 'order' => 500,

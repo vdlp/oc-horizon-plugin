@@ -25,7 +25,7 @@
         "ext-posix": "*",
         "ext-redis": "*",
         "composer/installers": "^1.0 || ^2.0",
-        "laravel/horizon": "^5.0",
+        "laravel/horizon": "^5.24.4",
         "october/rain": "^3.0"
     },
     "require-dev": {
