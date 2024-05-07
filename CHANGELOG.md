@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Added support for Laravel Horizon 5.24.4
+- Added support for Laravel Horizon 5.24.4.
 
 ### Deprecated
 
