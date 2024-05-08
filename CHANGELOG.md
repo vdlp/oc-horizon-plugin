@@ -4,6 +4,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.2.0] - 2024-05-08
+
+### Added
+
+- Added support for Laravel Horizon 5.24.4.
+
+### Deprecated
+
+- The `HORIZON_USE_DARK_THEME` environment variable can be removed. The dark theme is now based on the system settings.
+- The `horizon:publish` command can be removed. The assets don't need to be published anymore.
+
 ## [3.1.1] - 2023-02-06
 
 ### Changed
@@ -50,7 +61,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - The location of the Horizon assets has been changed. The Horizon assets are published into the plugin directory itself (`plugins/vdlp/horizon/assets`). Please note that you need to re-publish the assets when you are deploying your October CMS website or application using the `php artisan horizon:assets` command otherwise the Horizon Dashboard will not be available.
-- The `horizon:assets` command can now be used to (re-)publish the Horizon Assets required for the Horizon Dashboard. 
+- The `horizon:assets` command can now be used to (re-)publish the Horizon Assets required for the Horizon Dashboard.
 - Renamed `PushExampleJobs` to `PushExampleJobsCommand`.
 
 ### Removed

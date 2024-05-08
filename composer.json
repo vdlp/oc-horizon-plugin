@@ -25,8 +25,11 @@
         "ext-posix": "*",
         "ext-redis": "*",
         "composer/installers": "^1.0 || ^2.0",
-        "laravel/horizon": "^5.0",
+        "laravel/horizon": "^5.24.4",
         "october/rain": "^3.0"
+    },
+    "require-dev": {
+        "ergebnis/composer-normalize": "^2.42"
     },
     "repositories": [
         {
@@ -37,11 +40,10 @@
             ]
         }
     ],
-    "archive": {
-        "exclude": [
-            ".gitignore",
-            ".gitattributes",
-            ".idea/"
-        ]
+    "config": {
+        "allow-plugins": {
+            "composer/installers": true,
+            "ergebnis/composer-normalize": true
+        }
     }
 }
