@@ -14,6 +14,4 @@ return [
     'sms_notifications_enabled' => env('HORIZON_SMS_NOTIFICATIONS_ENABLED', false),
     'sms_notifications_to' => env('HORIZON_SMS_NOTIFICATIONS_TO'),
 
-    'use_dark_theme' => env('HORIZON_USE_DARK_THEME', true),
-
 ];
