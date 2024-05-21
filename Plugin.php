@@ -93,7 +93,7 @@ final class Plugin extends PluginBase
     public function registerMailTemplates(): array
     {
         return [
-            'vdlp.horizon::mail.long-wait-detected' => 'Long Queue Wait Detected',
+            'vdlp.horizon::mail.long-wait-detected',
         ];
     }
 
