@@ -10,6 +10,7 @@ use Backend\Models\User;
 use Illuminate\Notifications\NotificationServiceProvider;
 use Laravel\Horizon\Horizon;
 use System\Classes\PluginBase;
+use Vdlp\Horizon\Console\ClearQueuesCommand;
 use Vdlp\Horizon\Console\InstallCommand;
 use Vdlp\Horizon\Console\PushExampleJobsCommand;
 use Vdlp\Horizon\ServiceProviders\HorizonServiceProvider;
@@ -49,6 +50,7 @@ final class Plugin extends PluginBase
             $this->registerConsoleCommand(PushExampleJobsCommand::class, PushExampleJobsCommand::class);
         }
 
+        $this->registerConsoleCommand(ClearQueuesCommand::class, ClearQueuesCommand::class);
         $this->registerConsoleCommand(InstallCommand::class, InstallCommand::class);
     }
 
