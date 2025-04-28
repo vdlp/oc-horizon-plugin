@@ -26,7 +26,7 @@
         "ext-redis": "*",
         "composer/installers": "^1.0 || ^2.0",
         "laravel/horizon": "^5.24.4",
-        "october/rain": "^3.0"
+        "october/rain": "^3.0 || ^4.0"
     },
     "require-dev": {
         "ergebnis/composer-normalize": "^2.42"
