@@ -18,10 +18,10 @@ Horizon is 100% open source, so you're free to dig through the source to see exa
 
 ## Requirements
 
-* October CMS 3.0 or 4.0
-* PHP 8.0.2 or higher
+* October CMS 4.2 or higher
+* PHP 8.4 or higher
 * PHP extensions: `ext-pcntl`, `ext-posix` and `ext-redis`.
-* Supervisor, see [Laravel 9.x supervisor configuration](https://laravel.com/docs/9.x/queues#supervisor-configuration).
+* Supervisor, see [Laravel 12.x supervisor configuration](https://laravel.com/docs/12.x/queues#supervisor-configuration).
 
 ## Installation
 
@@ -155,7 +155,7 @@ It's recommended to add your Queue Worker Configuration `config.horizon.environm
 ## Server configuration
 
 * Add the following to the `supervisord` configuration on the server. The complete `supervisord` configuration can be found [on the supervisor website](http://supervisord.org/index.html).
-* See [Configuring Supervisor](https://laravel.com/docs/9.x/queues#configuring-supervisor) (Official Laravel Documentation).
+* See [Configuring Supervisor](https://laravel.com/docs/12.x/queues#configuring-supervisor) (Official Laravel Documentation).
 ```
 [program:<queue-name>-queue]
 process_name=%(program_name)s_%(process_num)02d
@@ -180,7 +180,7 @@ stopwaitsecs=90
 
 ## Creating Job classes
 
-Follow the instructions at [Laravel 9.x generating job classes](https://laravel.com/docs/9.x/queues#generating-job-classes) on how to make Job classes.
+Follow the instructions at [Laravel 12.x generating job classes](https://laravel.com/docs/12.x/queues#generating-job-classes) on how to make Job classes.
 
 > Please note that the use of the `php artisan make:job` command is not supported in October CMS. October CMS is using a different application structure in comparison to a generic Laravel project.
 
@@ -205,7 +205,7 @@ php artisan vdlp:horizon:push-example-jobs
 
 Please go to the Laravel website for detailed documentation about Laravel Horizon.
 
-[Horizon for Laravel 9.x](https://laravel.com/docs/9.x/horizon)
+[Horizon for Laravel 12.x](https://laravel.com/docs/12.x/horizon)
 
 ## Questions
 
