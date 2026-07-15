@@ -3,6 +3,7 @@
     "description": "Laravel Horizon integration for October CMS",
     "license": "GPL-2.0-only",
     "type": "october-plugin",
+    "abandoned": true,
     "keywords": [
         "october",
         "octobercms",
