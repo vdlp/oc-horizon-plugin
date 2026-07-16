@@ -3,6 +3,7 @@
     "description": "Laravel Horizon integration for October CMS",
     "license": "GPL-2.0-only",
     "type": "october-plugin",
+    "abandoned": true,
     "keywords": [
         "october",
         "octobercms",
@@ -20,13 +21,13 @@
         "email": "octobercms@vdlp.nl"
     },
     "require": {
-        "php": "^8.0.2",
+        "php": "^8.4",
         "ext-pcntl": "*",
         "ext-posix": "*",
         "ext-redis": "*",
         "composer/installers": "^1.0 || ^2.0",
         "laravel/horizon": "^5.24.4",
-        "october/rain": "^3.0 || ^4.0"
+        "october/rain": "^4.2"
     },
     "require-dev": {
         "ergebnis/composer-normalize": "^2.42"
